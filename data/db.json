@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "dd",
+      "price": 4646,
+      "checked": true
+    },
+    {
+      "id": 2,
+      "name": "gg",
+      "price": 5500,
+      "checked": false
+    },
+    {
+      "id": 3,
+      "name": "juju",
+      "price": 69999,
+      "checked": false
+    },
+    {
+      "id": 4,
+      "name": "fzf",
+      "price": 1200,
+      "checked": true
+    },
+    {
+      "name": "abdelali",
+      "price": "12300",
+      "checked": false,
+      "id": 5
+    }
+  ]
+}

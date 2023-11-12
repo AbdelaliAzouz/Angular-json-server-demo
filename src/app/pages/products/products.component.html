@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="card">
+    <div class="card-body">
+        <input type="text" [(ngModel)]="keyword" (input)="searchProduct()">
+        <button class="btn btn-outline-success" (click)="searchProduct()">Search
+            <i class="bi bi-search"></i>
+        </button>
+
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Checked</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>
+                <button class="border" (click)="handleCheck(product)">
+                    <i [ngClass]="product.checked ? 'bi bi-check-square-fill':'bi bi-circle'"></i>
+                </button>
+            </td>
+            <td>
+                <button (click)="handleDelete(product)">
+                    <i class="bi bi-trash3-fill"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
