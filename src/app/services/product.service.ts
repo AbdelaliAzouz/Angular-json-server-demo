@@ -12,8 +12,8 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  public getProducts(page:number=1, size:number=4):Observable<Array<Product>>{
-    return this.http.get<Array<Product>>(`http://localhost:8089/products?_page=${page}&_limit=${size}`) //La méthode get va retourner un tableau de product
+  public getProducts(page:number=1, size:number=4){
+    return this.http.get(`http://localhost:8089/products?_page=${page}&_limit=${size}`,{observe:'response'}) //La méthode get va retourner un tableau de product
   }
 
   public handleCheck(product:Product):Observable<Product> {

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/model/Product';
 import { ProductService } from 'src/app/services/product.service'
@@ -11,7 +11,10 @@ import { ProductService } from 'src/app/services/product.service'
 export class ProductsComponent implements OnInit {
 
   products: Array<Product> = [];
-  public keyword:string = "";
+  public keyword: string = "";
+  totalPages: number=0
+  currentPage: number = 1;
+  pageSize: number = 3;
 
   constructor(private http: HttpClient, private productService: ProductService){
   }
@@ -29,10 +32,19 @@ export class ProductsComponent implements OnInit {
     this.getProducts()    
   }
 
+
   public getProducts(){
-    this.productService.getProducts(1,3)
+    this.productService.getProducts(this.currentPage,this.pageSize)
     .subscribe({
-      next: data => this.products = data,
+      next: (response) => {
+        this.products = response.body as Product[]
+        let totalProducts:number= parseInt(response.headers.get('x-total-count')!)
+        this.totalPages = Math.floor(totalProducts/this.pageSize)
+        if(totalProducts % this.pageSize != 0){
+          this.totalPages++
+        }
+        console.log(this.totalPages)
+      },
       error: err => console.error(err)
     })
 
@@ -56,6 +68,5 @@ export class ProductsComponent implements OnInit {
       next : data => this.products=data
     })
   }
-
 
 }

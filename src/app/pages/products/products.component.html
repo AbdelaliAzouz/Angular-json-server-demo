@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 
-<div class="card">
+<div >
     <div class="card-body">
-        <input type="text" [(ngModel)]="keyword" (input)="searchProduct()">
+        <input class="pb-1 me-2" type="text" [(ngModel)]="keyword" (input)="searchProduct()">
         <button class="btn btn-outline-success" (click)="searchProduct()">Search
             <i class="bi bi-search"></i>
         </button>
@@ -34,3 +34,7 @@
         </tr>
     </tbody>
 </table>
+
+<div *ngFor="let page of products">
+    <button>A</button>
+</div> 

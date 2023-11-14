@@ -10,7 +10,7 @@
       "id": 2,
       "name": "gg",
       "price": 5500,
-      "checked": true
+      "checked": false
     },
     {
       "id": 3,
@@ -28,18 +28,6 @@
       "name": "abdelali",
       "price": "12300",
       "checked": false,
-      "id": 5
-    },
-    {
-      "name": "malcom",
-      "price": "51003",
-      "checked": true,
-      "id": 5
-    },
-    {
-      "name": "Helouen",
-      "price": "484",
-      "checked": true,
       "id": 5
     }
   ]
