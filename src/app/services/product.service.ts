@@ -12,8 +12,8 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  public getProducts(page:number=1, size:number=4){
-    return this.http.get(`http://localhost:8089/products?_page=${page}&_limit=${size}`,{observe:'response'}) //La méthode get va retourner un tableau de product
+  public getProducts(keyword:string="",page:number=1, size:number=4){
+    return this.http.get(`http://localhost:8089/products?name_like=${keyword}&_page=${page}&_limit=${size}`,{observe:'response'}) //La méthode get va retourner un tableau de product
   }
 
   public handleCheck(product:Product):Observable<Product> {
@@ -30,9 +30,5 @@ export class ProductService {
     return this.http.post<Product>(`http://localhost:8089/products`, product)
   }
 
-  public searchProduct(keyword:string):Observable<Array<Product>>{
-    return this.http.get<Array<Product>>(`http://localhost:8089/products?name_like=${keyword}`) //La méthode get va retourner un tableau de product
-
-  }
 
 }

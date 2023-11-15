@@ -34,7 +34,7 @@ export class ProductsComponent implements OnInit {
 
 
   public getProducts(){
-    this.productService.getProducts(this.currentPage,this.pageSize)
+    this.productService.getProducts(this.keyword,this.currentPage,this.pageSize)
     .subscribe({
       next: (response) => {
         this.products = response.body as Product[]
@@ -62,11 +62,9 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  public searchProduct(){
-    this.productService.searchProduct(this.keyword)
-    .subscribe({
-      next : data => this.products=data
-    })
+  goToPage(selectedPage:number){
+    this.currentPage = selectedPage
+    this.getProducts()
   }
 
 }
