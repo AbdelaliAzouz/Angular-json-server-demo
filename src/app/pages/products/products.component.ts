@@ -1,5 +1,6 @@
  import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/model/Product';
 import { ProductService } from 'src/app/services/product.service'
 
@@ -16,7 +17,7 @@ export class ProductsComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 3;
 
-  constructor(private http: HttpClient, private productService: ProductService){
+  constructor(private http: HttpClient, private productService: ProductService, private router: Router) {
   }
 
   handleCheck(product:Product) {
@@ -60,6 +61,11 @@ export class ProductsComponent implements OnInit {
         this.products=this.products.filter(p => p.id != product.id)
       } 
     })
+  }
+
+  // router!: Router;
+  public handleEdit(product:Product){
+    this.router.navigateByUrl(`/edit-product/${product.id}`)
   }
 
   goToPage(selectedPage:number){

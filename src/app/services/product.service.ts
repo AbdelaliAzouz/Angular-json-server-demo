@@ -30,5 +30,12 @@ export class ProductService {
     return this.http.post<Product>(`http://localhost:8089/products`, product)
   }
 
+  public getProductById(id:number):Observable<Product>{
+    return this.http.get<Product>(`http://localhost:8089/products/${id}`)
+  }
+
+  public updateProduct(product:Product):Observable<Product>{
+    return this.http.put<Product>(`http://localhost:8089/products/${product.id}`, product)
+  }
 
 }

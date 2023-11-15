@@ -27,8 +27,11 @@
                 </button>
             </td>
             <td>
-                <button (click)="handleDelete(product)">
+                <button (click)="handleDelete(product)" class="me-2">
                     <i class="bi bi-trash3-fill"></i>
+                </button>
+                <button [routerLink]="['/product',product.id]" (click)="handleEdit(product)">
+                    <i class="bi bi-pencil-fill"></i>
                 </button>
             </td>
         </tr>
